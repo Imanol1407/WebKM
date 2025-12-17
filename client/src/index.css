@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+@theme {
+  --color-km-gold: #F4C430;
+  --color-km-red: #D32F2F;
+  --color-km-dark: #1a1a1a;
+  --color-km-wood: #2C241B;
+
+  --font-sans: Roboto, sans-serif;
+  --font-header: Oswald, sans-serif;
+
+  --breakpoint-xs: 375px;
+}
+
+@layer base {
+  body {
+    background-color: #121212;
+    background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+    color: #f3f3f3;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .pizza-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .pizza-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .filter-btn {
+    @apply bg-transparent border-2 border-km-gold text-km-gold font-semibold;
+  }
+
+  .filter-btn.active {
+    @apply bg-km-gold text-black font-extrabold border-km-gold;
+    box-shadow: 0 0 15px rgba(244, 196, 48, 0.5);
+  }
+
+  .btn-size.active {
+    @apply bg-km-gold text-black font-bold border-km-gold;
+    box-shadow: 0 0 10px rgba(244, 196, 48, 0.4);
+  }
+
+  .title-impact {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-shadow: 3px 3px 0px #000000;
+    transform: scaleY(1.05);
+    display: inline-block;
+  }
+
+  .menu-title-impact {
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: linear-gradient(to bottom, #F4C430 0%, #D32F2F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(3px 3px 0px rgba(255, 255, 255, 0.1));
+    letter-spacing: -1px;
+  }
+
+  @media (min-width: 768px) {
+    .menu-title-impact {
+      font-size: 6rem;
+      letter-spacing: -2px;
+    }
+  }
+}
+
+@layer utilities {
+  .hero-overlay {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+  }
+
+  .emoji-integrated {
+    display: inline-block;
+    transform: rotate(15deg) translateY(-2px) scale(1.1);
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
+    margin: 0 -1px;
+  }
+
+  .page-transition {
+    animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideUpFade {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .glow-pulse {
+    animation: shadow-pulse 2s infinite;
+  }
+
+  @keyframes shadow-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(244, 196, 48, 0.7);
+    }
+
+    70% {
+      box-shadow: 0 0 0 10px rgba(244, 196, 48, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(244, 196, 48, 0);
+    }
+  }
+
+  .blink-text {
+    animation: blinker 2s linear infinite;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes wave-float {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+      transform: translateY(-2px) rotate(-3deg);
+    }
+
+    50% {
+      transform: translateY(0) rotate(0deg);
+    }
+
+    75% {
+      transform: translateY(2px) rotate(3deg);
+    }
+  }
+
+  .animate-wave {
+    animation: wave-float 3s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  @keyframes tick-tock {
+    0% {
+      transform: rotate(-1deg);
+    }
+
+    50% {
+      transform: rotate(1deg);
+    }
+
+    100% {
+      transform: rotate(-1deg);
+    }
+  }
+
+  .animate-tick-tock {
+    animation: tick-tock 4s ease-in-out infinite;
+  }
+
+  .lang-btn-style {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  .lang-btn-style:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
